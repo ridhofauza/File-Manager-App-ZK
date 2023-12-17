@@ -1,0 +1,32 @@
+<zk>
+	<window apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm')@init('com.learn.simpleapp.DashboardViewModel')"
+		title="@load(vm.title)">
+		<div sclass="grid">
+			<label value="File Upload: " style="width: 10px" />
+			<textbox value="" placeholder="File Name..."
+				disabled="true" />
+			<button label="Browse" upload="true"
+				onUpload="@command('btnBrowse', upload=event)" autodisable="self" />
+			<button label="Upload" />
+		</div>
+
+		<!-- List File -->
+		<grid id="grid" style="margin-top: 10px"
+			model="@load(vm.listFile)" mold="paging" pageSize="10">
+			<columns>
+				<column label="Name" />
+				<column label="Size (Bytes)" />
+				<column label="Action" />
+			</columns>
+			<template name="model">
+				<row>
+					<label value="@load(each.name)" />
+					<label value="@load(each.size)" />
+					<button label="Download"
+						onClick="@command('btnDownload', idx=forEachStatus.index)" />
+				</row>
+			</template>
+		</grid>
+	</window>
+</zk>

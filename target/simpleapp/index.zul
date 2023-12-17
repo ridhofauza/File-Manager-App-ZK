@@ -1,0 +1,9 @@
+<zk>
+	<window apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm')@init('com.learn.simpleapp.MyViewModel')"
+		validationMessages="@id('vmsgs')">
+		<hlayout>today is <label value="@load(vm.answer)" /></hlayout>
+		<button label="ask" onClick="@command('cmd')"/>
+		<button label="Go To Dashboard" style="margin: 5px;" onClick="@command('gotoDashboard')"/>
+	</window>
+</zk>
